@@ -595,7 +595,7 @@ elif page == "Flashcards":
         )
         if show:
             st.session_state.show_answer = not st.session_state.show_answer
-            st.experimental_rerun()
+            st.rerun()
 
     with col1:
         if st.button("◀ Previous"):
@@ -603,7 +603,7 @@ elif page == "Flashcards":
                 FLASHCARDS
             )
             st.session_state.show_answer = False
-            st.experimental_rerun()
+            st.rerun()
 
     with col3:
         if st.button("Next ▶"):
@@ -611,7 +611,7 @@ elif page == "Flashcards":
                 FLASHCARDS
             )
             st.session_state.show_answer = False
-            st.experimental_rerun()
+            st.rerun()
 
     st.caption(
         f"Card {st.session_state.flashcard_index + 1} of {len(FLASHCARDS)}"
@@ -643,7 +643,7 @@ elif page == "Practice MCQs":
         st.session_state.current_mcq = get_new_mcq(use_ai)
         # Reset any old selection
         st.session_state.pop("mcq_choice", None)
-        st.experimental_rerun()
+        st.rerun()
 
     if st.session_state.current_mcq is None:
         st.info("Click **New Question** to begin.")
@@ -671,7 +671,7 @@ elif page == "Practice Test":
         st.session_state.test_index = 0
         st.session_state.test_score = 0
         st.session_state.test_answers = {}
-        st.experimental_rerun()
+        st.rerun()
 
     if not st.session_state.test_questions:
         st.info("Click **Start / Reset Test** to begin a practice test.")
@@ -706,7 +706,7 @@ elif page == "Practice Test":
                     st.info(f"Explanation: {q['explanation']}")
 
                 st.session_state.test_index += 1
-                st.experimental_rerun()
+                st.rerun()
         else:
             # Test finished
             total = len(st.session_state.test_questions)
